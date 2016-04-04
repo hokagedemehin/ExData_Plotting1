@@ -6,7 +6,8 @@ plot1<-function(){
   for(i in 3:9){
     data[,i]<-as.numeric(data[,i])
   }
+  png("plot1.png", width=480, height=480)
   hist(data$Global_active_power,xlab = "Global Active Power(kilowatts)",
        col='red',main='Global Active Power')
-  
+  dev.off()
 }
