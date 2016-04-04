@@ -6,8 +6,9 @@ plot2<-function(){
   for(i in 3:9){
     data[,i]<-as.numeric(data[,i])
   }
+  png("plot1.png", width=480, height=480)
   c<-plot(data$Global_active_power,  type = 'n',xlab = "",
        ylab = "Global Active Power(kilowatts)")
   lines(data$Global_active_power,lty=1)
-  print(c)
+  dev.off()
 }
