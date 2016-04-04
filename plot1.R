@@ -1,13 +1,16 @@
 plot1<-function(){
 
   data<-read.csv('household_power_consumption.txt', stringsAsFactors = FALSE,sep=';')
-  data[,1]<-as.Date(data[,1], "%d/%m/%Y")
-  data<-subset(data,Date=="2007-02-01"|Date=="2007-02-02")
+  
+  data<-subset(data,Date=="1/2/2007"|Date=="2/2/2007")
+  datetime<-paste(data$Date,data$Time, sep = " ")
+  data$Date<-strptime(datetime, "%d/%m/%Y %X")
+  
   for(i in 3:9){
     data[,i]<-as.numeric(data[,i])
   }
-  png("plot1.png", width=480, height=480)
   hist(data$Global_active_power,xlab = "Global Active Power(kilowatts)",
        col='red',main='Global Active Power')
+  dev.copy(png, file='pp.png')
   dev.off()
 }
