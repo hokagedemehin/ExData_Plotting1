@@ -6,6 +6,7 @@ plot4<-function(){
   for(i in 3:9){
     data[,i]<-as.numeric(data[,i])
   }
+  png("plot4.png", width=480, height=480)
   par(mfrow=c(2,2))
   
   plot(data$Global_active_power,  type = 'n',xlab = "",
@@ -27,5 +28,5 @@ plot4<-function(){
   plot(data$Global_reactive_power, type='n',ylab = 'Global_reactive_power'
        ,xlab = 'datetime')
   lines(data$Global_reactive_power,lty=1)
-  
+  dev.off()
 }
